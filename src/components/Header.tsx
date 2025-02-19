@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Image from "next/image";
 import { FiShoppingCart, FiUser, FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
-    const [cartCount, setCartCount] = useState(3);
+    const [cartCount] = useState(3);
 
     const categories = [
         { id: 1, name: "Nacimientos", path: "/newborn" },
@@ -35,11 +36,13 @@ const Header = () => {
 
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center">
-                        <img
-                            className="h-12 w-auto sm:h-14 md:h-16"
-                            src="./logo1.png"
+                        <Image
+                            src="/logo1.png" 
                             alt="Kids Fashion Store"
-                            loading="lazy"
+                            width={64}
+                            height={64}
+                            className="h-12 w-auto sm:h-14 md:h-16"
+                            priority 
                         />
                     </div>
 
