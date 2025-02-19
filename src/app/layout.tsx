@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Elibel",
   description: "Elibel | bebes - niños, adolescentes",
+  icons: {
+    icon: '/icono.png',
+    apple: '/icono.png',
+  },
 };
 
 export default function RootLayout({
