@@ -2,21 +2,24 @@
 
 "use client";
 
+import Header from "@/components/Header";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 space-y-4 text-center">
-      <h1 className="bg-red-700 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold py-4 sm:py-6 px-8 sm:px-12 rounded-lg shadow-lg">
-        Elibel
-      </h1>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      <header className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+        <Header />
+      </header>
 
-      <Link
-        href="/authPage"
-        className="bg-red-700 text-white text-base sm:text-lg font-medium py-2 px-4 rounded-md shadow-md transition duration-300 hover:bg-red-800"
-      >
-        Página de Auth
-      </Link>
+      <main className="flex flex-col items-center justify-center flex-1 p-6 gap-6 text-center mt-16">
+        <Link
+          href="/authPage"
+          className="bg-red-600 text-white text-lg font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 hover:scale-105"
+        >
+          Página de Auth
+        </Link>
+      </main>
     </div>
   );
 }
