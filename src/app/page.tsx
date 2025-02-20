@@ -3,6 +3,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import HomePage from "@/components/HomePage/components/page";
 
 export default function Home() {
   return (
@@ -12,7 +13,9 @@ export default function Home() {
       </header>
 
       <main className="flex flex-col items-center justify-center flex-1 p-6 gap-6 text-center mt-16">
-        <h1 className="text-6xl pt-10 font-bold text-red-700">Home page</h1>
+
+        {/*Importar los componentes de homepage*/}
+        <HomePage/>
       </main>
     </div>
   );
