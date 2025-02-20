@@ -1,4 +1,7 @@
+"use client"
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FiShoppingCart, FiUser, FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
@@ -7,6 +10,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [cartCount] = useState(3);
+    const router = useRouter();
 
     const categories = [
         { id: 1, name: "Nacimientos", path: "/newborn" },
@@ -19,7 +23,7 @@ const Header = () => {
         <header className="bg-white shadow-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 md:h-20">
-                    {/* Mobile Menu Button */}
+                    {/* Menu de celu (boton) */}
                     <div className="flex md:hidden">
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -46,7 +50,7 @@ const Header = () => {
                         />
                     </div>
 
-                    {/* Desktop Navigation */}
+                    {/* Navegacion en web */}
                     <nav className="hidden md:flex space-x-8">
                         {categories.map((category) => (
                             <button
@@ -58,23 +62,29 @@ const Header = () => {
                         ))}
                     </nav>
 
-                    {/* User Actions */}
+                    {/* Login - registro de usuarios */}
                     <div className="flex items-center space-x-4">
                         <button
-                            onClick={() => setIsLoginOpen(!isLoginOpen)}
+                            onClick={() => {
+                                setIsLoginOpen(!isLoginOpen)
+                                router.push("/authPage");       //Ruta a la pagina de auth
+                            }}
+                            
                             className="flex items-center space-x-2 px-4 py-2 rounded-full bg-[#B77C52] text-white hover:bg-opacity-90 transition-colors duration-200"
                             aria-label="Login"
                         >
                             <FiUser className="h-5 w-5" />
-                            <span className="hidden sm:inline">Login</span>
+                            <span className="hidden sm:inline">Ingresar</span>
                         </button>
+
+                        {/*Boton carrito*/}
 
                         <button
                             className="relative flex items-center space-x-2 px-4 py-2 rounded-full bg-[#B3A799] text-white hover:bg-opacity-90 transition-colors duration-200"
                             aria-label="Shopping cart"
                         >
                             <FiShoppingCart className="h-5 w-5" />
-                            <span className="hidden sm:inline">Cart</span>
+                            <span className="hidden sm:inline">Carrito</span>
                             {cartCount > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                                     {cartCount}
@@ -85,7 +95,7 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
+            {/*Menu celular */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
@@ -104,51 +114,6 @@ const Header = () => {
                                 </button>
                             ))}
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Login Modal */}
-            <AnimatePresence>
-                {isLoginOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
-                        onClick={() => setIsLoginOpen(false)}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.95 }}
-                            animate={{ scale: 1 }}
-                            exit={{ scale: 0.95 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="bg-white rounded-lg p-6 w-full max-w-md"
-                        >
-                            <h2 className="text-2xl font-bold mb-4">Login</h2>
-                            <form className="space-y-4">
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Email</label>
-                                    <input
-                                        type="email"
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E8CAB] focus:ring-[#5E8CAB] sm:text-sm"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Password</label>
-                                    <input
-                                        type="password"
-                                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-[#5E8CAB] focus:ring-[#5E8CAB] sm:text-sm"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="w-full bg-[#5E8CAB] text-white rounded-md py-2 hover:bg-opacity-90 transition-colors duration-200"
-                                >
-                                    Sign In
-                                </button>
-                            </form>
-                        </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>

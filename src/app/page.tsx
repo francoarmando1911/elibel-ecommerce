@@ -3,7 +3,6 @@
 "use client";
 
 import Header from "@/components/Header";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,12 +12,7 @@ export default function Home() {
       </header>
 
       <main className="flex flex-col items-center justify-center flex-1 p-6 gap-6 text-center mt-16">
-        <Link
-          href="/authPage"
-          className="bg-red-600 text-white text-lg font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-red-700 hover:scale-105"
-        >
-          Página de Auth
-        </Link>
+        <h1 className="text-6xl pt-10 font-bold text-red-700">Home page</h1>
       </main>
     </div>
   );
