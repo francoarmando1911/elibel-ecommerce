@@ -36,8 +36,8 @@ const Home: React.FC = () => {
 
       {/* Productos en Tendencia */}
       <div className="w-full max-w-5xl">
-        <h2 className="text-2xl font-bold text-center text-[#5E8CAB]">Productos en Tendencia</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-4">
+        <h2 className="text-5xl font-bold text-center text-[#5E8CAB]">Productos en Tendencia</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-4 pt-5">
           {[1, 2, 3, 4].map((item) => (
             <div key={item} className="bg-white p-4 rounded-lg shadow-lg text-center">
               <img src={`/productos/producto${item}.jpg`} alt="Producto" className="w-full h-40 object-cover rounded-md" />
