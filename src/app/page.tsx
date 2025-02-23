@@ -2,6 +2,7 @@
 
 "use client";
 
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HomePage from "@/components/HomePage/components/page";
 
@@ -17,6 +18,7 @@ export default function Home() {
         {/*Importar los componentes de homepage*/}
         <HomePage/>
       </main>
+      <Footer/>
     </div>
   );
 }
