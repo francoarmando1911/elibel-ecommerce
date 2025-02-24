@@ -17,9 +17,7 @@ const slides: Slide[] = [
 ];
 
 const Slider: React.FC = () => {
-    console.log("slider montado");
     const [currentSlide, setCurrentSlide] = useState<number>(0);
-    const [isPlaying] = useState<boolean>(true);
     const [isHovered, setIsHovered] = useState<boolean>(false);
 
     const nextSlide = useCallback(() => {
@@ -32,28 +30,24 @@ const Slider: React.FC = () => {
 
     useEffect(() => {
         let intervalId: ReturnType<typeof setInterval>;
-        if (isPlaying && !isHovered) {
+        if (!isHovered) {
             intervalId = setInterval(nextSlide, 3000);
         }
         return () => clearInterval(intervalId);
-    }, [isPlaying, isHovered, nextSlide]);
+    }, [isHovered, nextSlide]);
 
     return (
-        <div className="relative max-w-full mx-auto mt-5 overflow-hidden shadow-xl">
+        <div className="relative w-screen h-[calc(100vh-100px)] overflow-hidden">
             {/* Carrusel de imágenes */}
             <div
-                className="relative h-72 sm:h-96 md:h-[500px]"
+                className="relative w-full h-full"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                role="region"
-                aria-roledescription="carousel"
-                aria-label="Image Slider"
             >
                 {slides.map((slide, index) => (
                     <div
                         key={slide.id}
-                        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
-                            }`}
+                        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
                         aria-hidden={index !== currentSlide}
                     >
                         <Image
@@ -69,7 +63,7 @@ const Slider: React.FC = () => {
 
             {/* Banner superpuesto */}
             <div
-                className="w-full max-w-5xl h-80 bg-cover bg-center rounded-lg flex items-center justify-center text-white text-center px-4 mt-5"
+                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-5xl h-80 bg-cover bg-center rounded-lg flex items-center justify-center text-white text-center px-4"
                 style={{ backgroundImage: "url('/banner-kids.jpg')" }}
             >
                 <div className="bg-black bg-opacity-50 p-6 rounded-lg">
@@ -89,12 +83,11 @@ const Slider: React.FC = () => {
             </div>
 
             {/* Indicadores */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
+            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-3">
                 {slides.map((_, index) => (
                     <button
                         key={index}
-                        className={`w-5 h-5 rounded-full ${index === currentSlide ? "bg-white" : "bg-gray-500"
-                            }`}
+                        className={`w-4 h-4 rounded-full transition-all duration-300 ${index === currentSlide ? "bg-white scale-125" : "bg-gray-500"}`}
                         onClick={() => setCurrentSlide(index)}
                         aria-label={`Go to slide ${index + 1}`}
                     />
@@ -103,20 +96,20 @@ const Slider: React.FC = () => {
 
             {/* Botón Anterior */}
             <button
-                className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-white bg-opacity-60 rounded-full p-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
+                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-60 rounded-full p-3 hover:bg-opacity-100 transition-all"
                 onClick={prevSlide}
                 aria-label="Previous slide"
             >
-                <FaChevronLeft className="text-3xl" />
+                <FaChevronLeft className="text-xl text-gray-700" />
             </button>
 
             {/* Botón Siguiente */}
             <button
-                className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-white bg-opacity-60 rounded-full p-4 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 hover:bg-blue-500 hover:text-white"
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-60 rounded-full p-3 hover:bg-opacity-100 transition-all"
                 onClick={nextSlide}
                 aria-label="Next slide"
             >
-                <FaChevronRight className="text-3xl" />
+                <FaChevronRight className="text-xl text-gray-700" />
             </button>
         </div>
     );
