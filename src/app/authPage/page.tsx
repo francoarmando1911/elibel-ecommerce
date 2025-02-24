@@ -1,14 +1,14 @@
-//EN ESTA PAGINA DEBERIA DESARROLLAR TODAS LAS VISUALES DE LOGIN, REGISTER, ETC
+//EN ESTA PAGINA DEBERIA importar TODAS LAS VISUALES DE LOGIN, REGISTER, ETC
 
 "use client"
 
+import Login from '@/components/AuthPage/page'
 import React from 'react'
 
 export default function LoginPage() {
   return (
     <>
-    <h1 className='font-bold text-4xl text-black pt-10'>Pagina de autenticacion</h1>
-
+    <Login/>
     </>
   )
 }
