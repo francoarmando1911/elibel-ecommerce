@@ -63,8 +63,8 @@ const Slider: React.FC = () => {
 
             {/* Banner superpuesto */}
             <div
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-5xl h-80 bg-cover bg-center rounded-lg flex items-center justify-center text-white text-center px-4"
-                style={{ backgroundImage: "url('/banner-kids.jpg')" }}
+                className="absolute top-96 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-80 bg-cover bg-center rounded-xl flex items-center justify-center text-white text-center px-4"
+                style={{ backgroundImage: "url('/icono.png')" }}
             >
                 <div className="bg-black bg-opacity-50 p-6 rounded-lg">
                     <h1 className="text-3xl md:text-5xl font-bold">
@@ -81,6 +81,7 @@ const Slider: React.FC = () => {
                     </Link>
                 </div>
             </div>
+
 
             {/* Indicadores */}
             <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-3">
@@ -103,7 +104,6 @@ const Slider: React.FC = () => {
                 <FaChevronLeft className="text-xl text-gray-700" />
             </button>
 
-            {/* Botón Siguiente */}
             <button
                 className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-60 rounded-full p-3 hover:bg-opacity-100 transition-all"
                 onClick={nextSlide}

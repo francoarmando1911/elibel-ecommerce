@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
-    const [cartCount] = useState(3);
+    const [cartCount] = useState(11);
     const router = useRouter();
 
     const categories = [
@@ -20,7 +20,7 @@ const Header = () => {
     ];
 
     return (
-        <header className="bg-white shadow-md">
+        <header className="bg-gradient-to-r from-blue-50 to-indigo-50 shadow-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16 md:h-20">
                     {/* Menu de celu (boton) */}
@@ -41,7 +41,7 @@ const Header = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center">
                         <Image
-                            src="/logo1.png" 
+                            src="/logo2.png" 
                             alt="Kids Fashion Store"
                             width={64}
                             height={64}
@@ -78,7 +78,6 @@ const Header = () => {
                         </button>
 
                         {/*Boton carrito*/}
-
                         <button
                             className="relative flex items-center space-x-2 px-4 py-2 rounded-full bg-[#B3A799] text-white hover:bg-opacity-90 transition-colors duration-200"
                             aria-label="Shopping cart"
